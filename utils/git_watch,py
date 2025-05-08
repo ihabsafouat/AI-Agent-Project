@@ -1,0 +1,8 @@
+import os
+import time
+
+def check_for_new_dags(dag_folder: str, known_files: set):
+    current_files = set(os.listdir(dag_folder))
+    new_files = current_files - known_files
+    dag_files = [f for f in new_files if f.endswith(".py")]
+    return dag_files, current_files
